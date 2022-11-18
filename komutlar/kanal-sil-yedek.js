@@ -1,0 +1,28 @@
+const Discord = require("discord.js");
+exports.run = (client, message, args) => {
+  
+    message.channel.send('__**YETKİ KONTROLÜ YAPILIYOR...**__');
+    if (!message.member.hasPermission('ADMINISTRATOR')) return message.reply('**Bu Sunucuda Yönetici Olmadığın İçin İşlem İptal Edildi ❌**');
+    message.channel.send('**Bu Sunucuda Yönetici Olduğun İçin İşlem Başlatıldı ✅**');
+    message.channel.send('**Kanalın Yanlışlıkla Silinmesi Botun Suçu Değildir !**');
+    message.channel.send('**Bu İşlem Geri Alınamaz !**');
+    message.channel.send('**Bu Metin Kanalı **__7 SANİYE__** İçinde Silinecektir !**').then(message => {
+    setTimeout(function () {
+      message.channel.delete();
+    },1 * 7000)
+  })
+  }
+
+exports.conf = {
+  enabled: true,
+  guildOnly: false,
+  aliases: [],
+  kategori: "sohbet",
+  permLevel: 0
+};
+
+exports.help = {
+  name: "kanalı-sil",
+  description: "Sohbetinizi kapatmaya yarar.",
+  usage: "kapat"
+};
